@@ -4,12 +4,12 @@ Every column description should be meaningful.
 Flag all columns that are single word
 */
 select 
-    _dbt_source_relation,
-    node_unique_id,
-    name,
-    description,
-    data_type,
-    quote
+    stg_columns._dbt_source_relation,
+    stg_columns.node_unique_id,
+    stg_columns.name,
+    stg_columns.description,
+    stg_columns.data_type,
+    stg_columns.quote
 from {{ ref("stg_columns") }}
 left outer join
     {{ ref("stg_nodes") }} on stg_columns.node_unique_id = stg_nodes.unique_id
