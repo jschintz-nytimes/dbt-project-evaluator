@@ -114,6 +114,10 @@ models:
           # required for Redshift because listagg runs only on tables
           +materialized: "{{ 'table' if target.type == 'redshift' else 'view' }}"
 
+tests:
+  # Override so downstream packages use dbt_project_evaluator
+  +schema: dbt_project_evaluator
+
 vars:
   exclude_packages: ["dig_dbt_sources"]
   
